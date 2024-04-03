@@ -1,11 +1,12 @@
 #include <iostream>
 #include "ComplexNumber.hpp"
+
 using namespace std;
 int main()
 {
-    ComplexNumber x=ComplexNumber(1.9,5);
+    ComplexNumber x=ComplexNumber(1.9,+8);
     ComplexNumber y=ComplexNumber(2,-3.6);
-    ComplexNumber z=ComplexNumber(2,-3.6);
+    ComplexNumber z=ComplexNumber(2,1);
     cout<<z<<endl;
     x=x+y;
     cout<<x<<endl;
@@ -13,7 +14,7 @@ int main()
         cout<<"sono vero"<<endl;
     }
 
-    coniugate(x);
+    x.coniugate();
     cout<<x<<endl;
 
 

@@ -3,20 +3,32 @@
 #include <cmath>
 using namespace std;
 ostream& operator<<(ostream& os, ComplexNumber& c){
-    os<<c.parte_intera<<" + "<<c.parte_immaginaria<<"i";
+    if(abs(c.parte_immaginaria - 0) < pow(10,-14)){
+        os<<c.parte_intera;
+    }
+    else {
+        if(abs(c.parte_immaginaria- 1) <pow(10,-14)){
+           os<<c.parte_intera<<" + "<<"i";
+        }
+        else if(abs(c.parte_immaginaria+ 1) <pow(10,-14)){
+            os<<c.parte_intera<<" - "<<"i";
+        }
+        else if(c.parte_immaginaria<0){
+                os<<c.parte_intera<<" "<<c.parte_immaginaria<<" i";
+        }
+        else
+           os<<c.parte_intera<<" +"<<c.parte_immaginaria<<" i";
+    }
+
     return os;
 }
 ComplexNumber operator+(const ComplexNumber& c, const ComplexNumber& d){
-    ComplexNumber ris(c.parte_immaginaria+d.parte_immaginaria,c.parte_intera+d.parte_intera);
+    ComplexNumber ris(c.parte_intera+d.parte_intera, c.parte_immaginaria+d.parte_immaginaria);
     return ris;
 }
 bool operator==(const ComplexNumber& c, const ComplexNumber& d){
-    if (((c.parte_immaginaria-d.parte_immaginaria)<pow(10,-15)) && ((c.parte_intera-d.parte_intera)<pow(10,-15))){
+    if ((abs(c.parte_immaginaria-d.parte_immaginaria)<pow(10,-14)) && ((c.parte_intera-d.parte_intera)<pow(10,-14))){
         return true;
     }
     return false;
-}
-void coniugate(ComplexNumber& c){
-    c.parte_immaginaria=-c.parte_immaginaria;
-
 }

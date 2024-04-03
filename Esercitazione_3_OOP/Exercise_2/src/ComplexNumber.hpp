@@ -7,9 +7,12 @@ struct ComplexNumber{
         parte_intera=a;
         parte_immaginaria=b;
     }
+    void coniugate(){
+        parte_immaginaria= - parte_immaginaria;
+    }
 
-};
+    };
 ostream& operator<<(ostream& os, ComplexNumber& c);
 ComplexNumber operator+(const ComplexNumber& c, const ComplexNumber& d);
 bool operator ==(const ComplexNumber& c, const ComplexNumber& d);
-void coniugate(ComplexNumber& c);
+
